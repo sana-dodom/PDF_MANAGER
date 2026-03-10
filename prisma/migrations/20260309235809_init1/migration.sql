@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "pdf_uploads" ADD COLUMN     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

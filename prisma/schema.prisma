@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model pdfUpload {
+  id          String   @id @default(cuid())
+  filename    String
+  filePath    String   @map("file_path")
+  publicUrl   String   @map("public_url")
+  fileSize    Int      @map("file_size")
+  createddAt  DateTime @map("created_at") @default(now())
+  uploadedAt  DateTime @map("uploaded_at") @default(now())
+  userId      String?  @map("user_id")
+  metadata    Json?
+
+  @@map("pdf_uploads")
+  @@index([userId])
+  @@index([uploadedAt])
+}
